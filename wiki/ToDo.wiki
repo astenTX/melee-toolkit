@@ -16,3 +16,6 @@
   * Support replacing files with larger ones
 
 = Level 3 =
+  * Implement audio extract/replace
+  * Support editing stage files
+  * Implement mesh support
