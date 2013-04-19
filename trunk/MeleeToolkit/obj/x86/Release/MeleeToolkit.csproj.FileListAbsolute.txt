@@ -1,0 +1,9 @@
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\bin\Release\MeleeToolkit.exe
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\bin\Release\MeleeToolkit.pdb
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\ResolveAssemblyReference.cache
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\MeleeToolkit.MainWindow.resources
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\MeleeToolkit.Properties.Resources.resources
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\GenerateResource.read.1.tlog
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\GenerateResource.write.1.tlog
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\MeleeToolkit.exe
+B:\Documents\SSBMO\MeleeToolkit\MeleeToolkit\obj\x86\Release\MeleeToolkit.pdb
