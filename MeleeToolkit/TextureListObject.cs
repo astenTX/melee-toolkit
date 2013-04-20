@@ -8,7 +8,7 @@ using libWiiSharp;
 
 namespace MeleeToolkit
 {
-    class TextureListObject
+    public class TextureListObject
     {
         public string name;
         public TextureNode node;

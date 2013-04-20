@@ -55,7 +55,7 @@ namespace MeleeToolkit
             button3.Enabled = true;
             if (FileHandler.isFileLoaded) button4.Enabled = true;
             texturePictureBox.Image = null;
-            textureInfoLabel.Text = "Size:\nFormat:";
+            textureInfoLabel.Text = "Size:\nFormat:\nColors:";
             nodesTreeView.Nodes.Clear();
             nodesTreeView.BeginUpdate();
             nodesTreeView.Nodes.Add(DatFile.rootNode);
@@ -243,7 +243,9 @@ namespace MeleeToolkit
                 buttonReplaceTexture.Enabled = false;
             }
             texturePictureBox.Image = tex.imageBitmap;
-            textureInfoLabel.Text = "Size: " + tex.imageHeader.width0x4.ToString() + " x " + tex.imageHeader.height0x6.ToString() + "\nFormat: " + tex.imageHeader.imageFormatString;
+            String colors = "";
+            if (tex.paletteHeader.colorCount0xA != 0) colors = tex.paletteHeader.colorCount0xA.ToString();
+            textureInfoLabel.Text = "Size: " + tex.imageHeader.width0x4.ToString() + " x " + tex.imageHeader.height0x6.ToString() + "\nFormat: " + tex.imageHeader.imageFormatString + "\nColors: " + colors;
         }
 
         private void button1_Click(object sender, EventArgs e)

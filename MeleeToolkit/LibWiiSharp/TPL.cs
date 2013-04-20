@@ -153,6 +153,13 @@ namespace libWiiSharp
 
         #region Public Functions
 
+        public static byte[] ConvertToTextureMelee(Image image, TextureListObject tlo, out byte[] paletteData)
+        {
+            TPL tmpTpl = FromImage(image, (TPL_TextureFormat) tlo.imageHeader.imageFormat0x8, (TPL_PaletteFormat) tlo.paletteHeader.paletteFormat0x4);
+            paletteData = tmpTpl.paletteData[0];
+            return tmpTpl.textureData[0];
+        }
+
         public static Bitmap ConvertFromTextureMelee(ImageHeader imageHeader, PaletteHeader paletteHeader, out int imageSize)
         {
             TPL tmpTpl = new TPL();

@@ -79,7 +79,7 @@ namespace MeleeToolkit
             while (buffer != 0)
             {
                 buffer = _streamFile.ReadByte();
-                filename += (char)buffer;
+                if (buffer != 0) filename += (char)buffer;
             }
             _streamFile.Seek(position, SeekOrigin.Begin);
             return filename;

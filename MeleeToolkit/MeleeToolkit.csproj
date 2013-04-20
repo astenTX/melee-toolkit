@@ -48,8 +48,6 @@
   <ItemGroup>
     <Compile Include="DatFile.cs" />
     <Compile Include="FileHandler.cs" />
-    <Compile Include="ImageData.cs" />
-    <Compile Include="ImageDataFormat.cs" />
     <Compile Include="IsoFileInfo.cs" />
     <Compile Include="LibWiiSharp\MessageEventArgs.cs" />
     <Compile Include="LibWiiSharp\Shared.cs" />
