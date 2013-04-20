@@ -590,12 +590,12 @@
             this.textureInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textureInfoLabel.AutoSize = true;
             this.textureInfoLabel.BackColor = System.Drawing.Color.Transparent;
-            this.textureInfoLabel.Location = new System.Drawing.Point(6, 393);
+            this.textureInfoLabel.Location = new System.Drawing.Point(6, 381);
             this.textureInfoLabel.Margin = new System.Windows.Forms.Padding(0);
             this.textureInfoLabel.Name = "textureInfoLabel";
-            this.textureInfoLabel.Size = new System.Drawing.Size(42, 26);
+            this.textureInfoLabel.Size = new System.Drawing.Size(42, 39);
             this.textureInfoLabel.TabIndex = 1;
-            this.textureInfoLabel.Text = "Size:\r\nFormat:";
+            this.textureInfoLabel.Text = "Size:\r\nFormat:\r\nColors:";
             // 
             // texturePictureBox
             // 

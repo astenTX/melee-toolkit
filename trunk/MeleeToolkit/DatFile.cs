@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using libWiiSharp;
 
 namespace MeleeToolkit
 {
@@ -356,28 +357,10 @@ namespace MeleeToolkit
 
         public static void ReplaceTexture(Image newImage, TextureListObject textureListObject)
         {
-            Bitmap newBitmap = new Bitmap(newImage);
-            byte[] newImageByte = ImageData.GetData(newBitmap);
             ImageHeader imageHeader = textureListObject.imageHeader;
-            byte[] newTextureData;
-
-            if (newImage.Width != textureListObject.imageHeader.width0x4 ||
-                newImage.Height != textureListObject.imageHeader.height0x6)
-            {
-                MessageBox.Show("Error: Selected image is not the same resolution!");
-            }
-
-            switch (imageHeader.imageFormat0x8)
-            {
-                case 0xe:   //CMPR
-                    newTextureData = ImageDataFormat.Cmpr.ConvertTo(newImageByte, imageHeader.width0x4, imageHeader.height0x6);
-                    break;
-                case 0:
-                    newTextureData = ImageDataFormat.I4.ConvertTo(newImageByte, imageHeader.width0x4, imageHeader.height0x6);
-                    break;
-                default:
-                    return;
-            }
+            PaletteHeader paletteHeader = textureListObject.paletteHeader;
+            byte[] newPaletteData;
+            byte[] newTextureData = TPL.ConvertToTextureMelee(newImage, textureListObject, out newPaletteData);
 
             if (newTextureData.Length != textureListObject.imageSize)
             {
@@ -385,7 +368,15 @@ namespace MeleeToolkit
                 return;
             }
 
-            Array.ConstrainedCopy(newTextureData, 0, file, (int) (imageHeader.imageOffset0x0 + dataOffset), newTextureData.Length);
+            if (newPaletteData.Length > paletteHeader.colorCount0xA*2)
+            {
+                MessageBox.Show(
+                    "The selected image contains more colors than the original image. Please use no more than " + paletteHeader.colorCount0xA + " colors.");
+                return;
+            }
+
+            Array.ConstrainedCopy(newTextureData, 0, file, (int)(imageHeader.imageOffset0x0 + dataOffset), newTextureData.Length);
+            Array.ConstrainedCopy(newPaletteData, 0, file, (int)(paletteHeader.paletteOffset0x0 + dataOffset), Math.Min((paletteHeader.colorCount0xA * 2), newPaletteData.Length));
             OpenDatFile(file, fileName, ref textureList);
         }
 
@@ -486,7 +477,7 @@ namespace MeleeToolkit
         public float  unknown0x10;
     }
 
-    struct TextureNode
+    public struct TextureNode
     {
         public UInt32 location;
         public UInt32 unknown0x00;
