@@ -36,11 +36,11 @@ namespace MeleeToolkit
                 FileHandler.OpenFile(info.FullName);
                 label7.Text = FileHandler.GetTitle();
                 label6.Text = FileHandler.GetVersion();
-                treeView1.Nodes.Clear();
-                treeView1.BeginUpdate();
-                treeView1.Nodes.Add(FileHandler.root);
-                treeView1.Nodes[0].Expand();
-                treeView1.EndUpdate();
+                filesystemTreeView.Nodes.Clear();
+                filesystemTreeView.BeginUpdate();
+                filesystemTreeView.Nodes.Add(FileHandler.root);
+                filesystemTreeView.Nodes[0].Expand();
+                filesystemTreeView.EndUpdate();
                 if (DatFile.isFileLoaded) button4.Enabled = true;
 
 
@@ -49,23 +49,23 @@ namespace MeleeToolkit
 
         private void OpenDatFileAndUpdateWindow(byte[] file, string fileName)
         {
-            DatFile.OpenDatFile(file, fileName, ref listBox1);
+            DatFile.OpenDatFile(file, fileName, ref textureListBox);
             label2.Text = DatFile.fileName;
             label3.Text = DatFile.file.Length.ToString() + " bytes";
             button3.Enabled = true;
             if (FileHandler.isFileLoaded) button4.Enabled = true;
-            pictureBox2.Image = null;
-            label1.Text = "Size:\nFormat:";
-            treeView2.Nodes.Clear();
-            treeView2.BeginUpdate();
-            treeView2.Nodes.Add(DatFile.rootNode);
-            treeView2.Nodes[0].Expand();
-            treeView2.EndUpdate();
+            texturePictureBox.Image = null;
+            textureInfoLabel.Text = "Size:\nFormat:";
+            nodesTreeView.Nodes.Clear();
+            nodesTreeView.BeginUpdate();
+            nodesTreeView.Nodes.Add(DatFile.rootNode);
+            nodesTreeView.Nodes[0].Expand();
+            nodesTreeView.EndUpdate();
         }
 
         private void Button_Export_Click(object sender, EventArgs e)
         {
-            IsoFileInfo info = (IsoFileInfo) treeView1.SelectedNode.Tag;
+            IsoFileInfo info = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
             String extension = info.Name.Substring(info.Name.IndexOf('.'));
             var saveFileDialog1 = new SaveFileDialog
             {
@@ -86,7 +86,7 @@ namespace MeleeToolkit
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Nodes.Count > 0)
+            if (filesystemTreeView.SelectedNode == null || filesystemTreeView.SelectedNode.Nodes.Count > 0)
             {
                 Button_Export.Enabled = false;
                 Button_Open.Enabled = false;
@@ -95,19 +95,19 @@ namespace MeleeToolkit
 
             else
             {
-                Button_Export.Enabled = treeView1.SelectedNode.Text.IndexOf(".") != -1;
-                Button_Open.Enabled = treeView1.SelectedNode.Text.IndexOf(".") != -1;
-                button6.Enabled = treeView1.SelectedNode.Text.IndexOf(".") != -1;
+                Button_Export.Enabled = filesystemTreeView.SelectedNode.Text.IndexOf(".") != -1;
+                Button_Open.Enabled = filesystemTreeView.SelectedNode.Text.IndexOf(".") != -1;
+                button6.Enabled = filesystemTreeView.SelectedNode.Text.IndexOf(".") != -1;
             }
 
-            IsoFileInfo fileInfo = (IsoFileInfo)treeView1.SelectedNode.Tag;
+            IsoFileInfo fileInfo = (IsoFileInfo)filesystemTreeView.SelectedNode.Tag;
             label5.Text = fileInfo.Name;
             label4.Text = fileInfo.Size.ToString() + " bytes";
         }
 
         private void Button_Open_Click(object sender, EventArgs e)
         {
-            IsoFileInfo info = (IsoFileInfo) treeView1.SelectedNode.Tag;
+            IsoFileInfo info = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
             OpenDatFileAndUpdateWindow(FileHandler.OpenDatFile(info), info.Name);
         }
 
@@ -115,9 +115,9 @@ namespace MeleeToolkit
         {
             dataGridView1.Rows.Clear();
             
-            if (treeView2.SelectedNode.Level == 0)
+            if (nodesTreeView.SelectedNode.Level == 0)
             {
-                DatHeader node = (DatHeader) treeView2.SelectedNode.Tag;
+                DatHeader node = (DatHeader) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", "00000000");
                 dataGridView1.Rows.Add("0x00", "File Size", node.FileSize0x00.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Data Block Size", node.DataBlockSize0x04.ToString("x8"));
@@ -128,18 +128,18 @@ namespace MeleeToolkit
                 dataGridView1.Rows.Add("0x18", "Unknown", node.Unknown0x18.ToString("x8"));
                 dataGridView1.Rows.Add("0x1C", "Unknown", node.Unknown0x1C.ToString("x8"));
             }
-            else if (treeView2.SelectedNode.Level == 1)
+            else if (nodesTreeView.SelectedNode.Level == 1)
             {
-                RootNode node = (RootNode) treeView2.SelectedNode.Tag;
+                RootNode node = (RootNode) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Data Offset", node.RootOffset0x0.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "String Table Offset", node.StringTableOffset0x4.ToString("x8"));
                 dataGridView1.Tag = node;
             }
 
-            else if (treeView2.SelectedNode.Text == "JointNode")
+            else if (nodesTreeView.SelectedNode.Text == "JointNode")
             {
-                JointNode node = (JointNode)treeView2.SelectedNode.Tag;
+                JointNode node = (JointNode)nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Unknown", node.unknown0x00.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Flags", node.flags0x04.ToString("x8"));
@@ -160,9 +160,9 @@ namespace MeleeToolkit
                 dataGridView1.Tag = node;
             }
 
-            else if (treeView2.SelectedNode.Text == "JointDataNode")
+            else if (nodesTreeView.SelectedNode.Text == "JointDataNode")
             {
-                JointDataNode node = (JointDataNode) treeView2.SelectedNode.Tag;
+                JointDataNode node = (JointDataNode) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Unknown", node.unknown0x0.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Next Offset", node.nextOffset0x4.ToString("x8"));
@@ -171,9 +171,9 @@ namespace MeleeToolkit
                 dataGridView1.Tag = node;
             }
 
-            else if (treeView2.SelectedNode.Text == "MaterialNode")
+            else if (nodesTreeView.SelectedNode.Text == "MaterialNode")
             {
-                MaterialNode node = (MaterialNode) treeView2.SelectedNode.Tag;
+                MaterialNode node = (MaterialNode) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Unknown", node.unknown0x00.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Unknown Flags", node.unknownFlags0x04.ToString("x8"));
@@ -184,9 +184,9 @@ namespace MeleeToolkit
                 dataGridView1.Rows.Add("0x14", "Unknown", node.unknown0x14.ToString("x8"));
             }
 
-            else if (treeView2.SelectedNode.Text == "MaterialColorNode")
+            else if (nodesTreeView.SelectedNode.Text == "MaterialColorNode")
             {
-                MaterialColorNode node = (MaterialColorNode) treeView2.SelectedNode.Tag;
+                MaterialColorNode node = (MaterialColorNode) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Color", node.unknownColor0x00.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Color", node.unknownColor0x04.ToString("x8"));
@@ -195,9 +195,9 @@ namespace MeleeToolkit
                 dataGridView1.Rows.Add("0x10", "Unknown", node.unknown0x10);
             }
 
-            else if (treeView2.SelectedNode.Text == "TextureNode")
+            else if (nodesTreeView.SelectedNode.Text == "TextureNode")
             {
-                TextureNode node = (TextureNode) treeView2.SelectedNode.Tag;
+                TextureNode node = (TextureNode) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", node.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Unknown", node.unknown0x00.ToString("x8"));
                 dataGridView1.Rows.Add("0x4C", "Image Header Offset", node.imageHeaderOffset0x4C.ToString("x8"));
@@ -206,9 +206,9 @@ namespace MeleeToolkit
                 dataGridView1.Rows.Add("0x58", "Unknown Offset", node.unknownOffset0x58.ToString("x8"));
             }
 
-            else if (treeView2.SelectedNode.Text == "ImageHeader")
+            else if (nodesTreeView.SelectedNode.Text == "ImageHeader")
             {
-                ImageHeader header = (ImageHeader) treeView2.SelectedNode.Tag;
+                ImageHeader header = (ImageHeader) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", header.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Image Offset", header.imageOffset0x0.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Height", header.height0x6.ToString("x4"));
@@ -217,9 +217,9 @@ namespace MeleeToolkit
 
             }
 
-            else if (treeView2.SelectedNode.Text == "PaletteHeader")
+            else if (nodesTreeView.SelectedNode.Text == "PaletteHeader")
             {
-                PaletteHeader header = (PaletteHeader) treeView2.SelectedNode.Tag;
+                PaletteHeader header = (PaletteHeader) nodesTreeView.SelectedNode.Tag;
                 dataGridView1.Rows.Add("", "Location", header.location.ToString("x8"));
                 dataGridView1.Rows.Add("0x00", "Palette Offset", header.paletteOffset0x0.ToString("x8"));
                 dataGridView1.Rows.Add("0x04", "Palette Format", header.paletteFormatString);
@@ -231,22 +231,32 @@ namespace MeleeToolkit
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextureListObject tex = (TextureListObject) listBox1.SelectedItem;
-            pictureBox2.Image = tex.imageBitmap;
-            label1.Text = "Size: " + tex.imageHeader.width0x4.ToString() + " x " + tex.imageHeader.height0x6.ToString() + "\nFormat: " + tex.imageHeader.imageFormatString;
+            TextureListObject tex = (TextureListObject) textureListBox.SelectedItem;
+            if (tex != null)
+            {
+                buttonExportTexture.Enabled = true;
+                buttonReplaceTexture.Enabled = true;
+            }
+            else
+            {
+                buttonExportTexture.Enabled = false;
+                buttonReplaceTexture.Enabled = false;
+            }
+            texturePictureBox.Image = tex.imageBitmap;
+            textureInfoLabel.Text = "Size: " + tex.imageHeader.width0x4.ToString() + " x " + tex.imageHeader.height0x6.ToString() + "\nFormat: " + tex.imageHeader.imageFormatString;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string fileName = listBox1.SelectedItem.ToString();
-            Image image = pictureBox2.Image;
+            string fileName = textureListBox.SelectedItem.ToString();
+            Image image = texturePictureBox.Image;
             saveTextureDialog.InitialDirectory = Settings.Default.saveTexturePath;
             saveTextureDialog.FileName = fileName;
 
             if (saveTextureDialog.ShowDialog() == DialogResult.OK)
             {
                 Settings.Default.saveTexturePath = Path.GetDirectoryName(saveTextureDialog.FileName);
-                FileHandler.ExportImage(image, saveTextureDialog);
+                DatFile.ExportImage(image, saveTextureDialog.FileName);
                 
             }
         }
@@ -266,11 +276,11 @@ namespace MeleeToolkit
             Settings.Default.openTexturePath = Path.GetDirectoryName(info.FullName);
 
             Image newImage = new Bitmap(myStream);
-            TextureListObject currentTexture = (TextureListObject) listBox1.SelectedItem;
-            int selectedTextureIndex = listBox1.SelectedIndex;
+            TextureListObject currentTexture = (TextureListObject) textureListBox.SelectedItem;
+            int selectedTextureIndex = textureListBox.SelectedIndex;
             DatFile.ReplaceTexture(newImage, currentTexture);
-            listBox1.SetSelected(selectedTextureIndex, true);
-            listBox1.Focus();
+            textureListBox.SetSelected(selectedTextureIndex, true);
+            textureListBox.Focus();
 
         }
 
@@ -281,14 +291,14 @@ namespace MeleeToolkit
             if (saveDatFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Settings.Default.saveDatFilePath = Path.GetDirectoryName(saveDatFileDialog.FileName);
-                FileHandler.SaveDatFile(saveDatFileDialog);
+                DatFile.SaveDatFile(saveDatFileDialog);
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             string datFileName = DatFile.fileName;
-            IsoFileInfo fileInfo = FileHandler.SearchIso(datFileName, treeView1.Nodes[0]);
+            IsoFileInfo fileInfo = FileHandler.SearchIso(datFileName, filesystemTreeView.Nodes[0]);
             if (fileInfo == null)
                 MessageBox.Show("Error finding file in disc image!");
             else
@@ -307,7 +317,7 @@ namespace MeleeToolkit
             {
                 var info = new FileInfo(openDatFileDialog.FileName);
                 Settings.Default.openDatFilePath = Path.GetDirectoryName(info.FullName);
-                OpenDatFileAndUpdateWindow(FileHandler.OpenDatFile(new FileStream(openDatFileDialog.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite)), info.Name);
+                OpenDatFileAndUpdateWindow(DatFile.OpenDatFile(new FileStream(openDatFileDialog.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite)), info.Name);
             }
         }
 
@@ -320,7 +330,7 @@ namespace MeleeToolkit
             {
                 var info = new FileInfo(openDatFileDialog.FileName);
                 Settings.Default.openDatFilePath = Path.GetDirectoryName(info.FullName);
-                var fileInfo = (IsoFileInfo) treeView1.SelectedNode.Tag;
+                var fileInfo = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
                 FileHandler.ReplaceFileInIso(fileInfo, info.FullName);
             }
         }

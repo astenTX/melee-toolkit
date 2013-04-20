@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MeleeToolkit
@@ -298,9 +300,9 @@ namespace MeleeToolkit
                 case 4: newImageHeader.imageFormatString = "RGB565"; break;
                 case 5: newImageHeader.imageFormatString = "RGB5A3"; break;
                 case 6: newImageHeader.imageFormatString = "RGBA8"; break;
-                case 8: newImageHeader.imageFormatString = "index4"; break;
-                case 9: newImageHeader.imageFormatString = "index8"; break;
-                case 0xa: newImageHeader.imageFormatString = "index14x2"; break;
+                case 8: newImageHeader.imageFormatString = "CI4"; break;
+                case 9: newImageHeader.imageFormatString = "CI8"; break;
+                case 0xa: newImageHeader.imageFormatString = "CI14X2"; break;
                 case 0xe: newImageHeader.imageFormatString = "CMPR"; break;
                 default: newImageHeader.imageFormatString = "Unknown"; break;
             }
@@ -377,7 +379,7 @@ namespace MeleeToolkit
                     return;
             }
 
-            if (newTextureData.Length != textureListObject.imageData.Length)
+            if (newTextureData.Length != textureListObject.imageSize)
             {
                 MessageBox.Show("Error: Selected image is not the same file size!");
                 return;
@@ -387,7 +389,30 @@ namespace MeleeToolkit
             OpenDatFile(file, fileName, ref textureList);
         }
 
+        internal static void ExportImage(Image image, string filePath)
+        {
+            image.Save(filePath, ImageFormat.Png);
+        }
 
+        internal static void SaveDatFile(SaveFileDialog dialog)
+        {
+            byte[] datFile = file;
+            Stream myStream;
+            if ((myStream = dialog.OpenFile()) != null)
+            {
+                myStream.Write(datFile, 0, datFile.Length);
+                myStream.Close();
+
+            }
+        }
+
+        internal static byte[] OpenDatFile(Stream datStream)
+        {
+            byte[] outFile = new byte[datStream.Length];
+            datStream.Read(outFile, 0, (int)datStream.Length);
+            datStream.Close();
+            return outFile;
+        }
     }
 
     struct DatHeader
@@ -473,7 +498,7 @@ namespace MeleeToolkit
         public PaletteHeader paletteHeader;
     }
 
-    struct ImageHeader
+    public struct ImageHeader
     {
         public UInt32 location;
         public UInt32 imageOffset0x0;
@@ -483,7 +508,7 @@ namespace MeleeToolkit
         public string imageFormatString;
     }
 
-    struct PaletteHeader
+    public struct PaletteHeader
     {
         public UInt32 location;
         public UInt32 paletteOffset0x0;
