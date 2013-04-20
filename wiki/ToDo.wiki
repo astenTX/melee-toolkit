@@ -1,7 +1,7 @@
 #summary Features I hope to incorporate and their priorities.
 
 = Level 1 =
-  * Support additional texture formats
+  * ~~Support additional texture formats~~
   * Clean up code
   * Implement .dat node editing
   * Implement extract/replace of boot.dol
