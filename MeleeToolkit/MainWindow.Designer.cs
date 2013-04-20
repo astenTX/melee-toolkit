@@ -30,28 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabDiscImage = new System.Windows.Forms.TabPage();
-            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.discImageTabControl = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.discImageGroupBox = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Button_openfile = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.filesystemSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.filesystemTreeView = new System.Windows.Forms.TreeView();
             this.filesystemImageList = new System.Windows.Forms.ImageList(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.Button_Export = new System.Windows.Forms.Button();
             this.Button_Open = new System.Windows.Forms.Button();
             this.tabDatFile = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.datFileTabControl = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.datFileGroupGox = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,70 +60,69 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.nodesSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.nodesTreeView = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VariableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.texturesSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.textureListBox = new System.Windows.Forms.ListBox();
+            this.buttonReplaceTexture = new System.Windows.Forms.Button();
+            this.buttonExportTexture = new System.Windows.Forms.Button();
+            this.textureInfoLabel = new System.Windows.Forms.Label();
+            this.texturePictureBox = new System.Windows.Forms.PictureBox();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDiscImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.openDatFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button6 = new System.Windows.Forms.Button();
             this.openTextureDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveTextureDialog = new System.Windows.Forms.SaveFileDialog();
             this.saveDatFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.tabControl1.SuspendLayout();
+            this.mainTabControl.SuspendLayout();
             this.tabDiscImage.SuspendLayout();
-            this.tabControl3.SuspendLayout();
+            this.discImageTabControl.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.discImageGroupBox.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filesystemSplitContainer)).BeginInit();
+            this.filesystemSplitContainer.Panel1.SuspendLayout();
+            this.filesystemSplitContainer.Panel2.SuspendLayout();
+            this.filesystemSplitContainer.SuspendLayout();
             this.tabDatFile.SuspendLayout();
-            this.tabControl2.SuspendLayout();
+            this.datFileTabControl.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.datFileGroupGox.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nodesSplitContainer)).BeginInit();
+            this.nodesSplitContainer.Panel1.SuspendLayout();
+            this.nodesSplitContainer.Panel2.SuspendLayout();
+            this.nodesSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.texturesSplitContainer)).BeginInit();
+            this.texturesSplitContainer.Panel1.SuspendLayout();
+            this.texturesSplitContainer.Panel2.SuspendLayout();
+            this.texturesSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.texturePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // mainTabControl
             // 
-            this.tabControl1.Controls.Add(this.tabDiscImage);
-            this.tabControl1.Controls.Add(this.tabDatFile);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(627, 489);
-            this.tabControl1.TabIndex = 2;
+            this.mainTabControl.Controls.Add(this.tabDiscImage);
+            this.mainTabControl.Controls.Add(this.tabDatFile);
+            this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainTabControl.Location = new System.Drawing.Point(0, 0);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.SelectedIndex = 0;
+            this.mainTabControl.Size = new System.Drawing.Size(627, 489);
+            this.mainTabControl.TabIndex = 2;
             // 
             // tabDiscImage
             // 
-            this.tabDiscImage.Controls.Add(this.tabControl3);
+            this.tabDiscImage.Controls.Add(this.discImageTabControl);
             this.tabDiscImage.Location = new System.Drawing.Point(4, 22);
             this.tabDiscImage.Name = "tabDiscImage";
             this.tabDiscImage.Padding = new System.Windows.Forms.Padding(3);
@@ -131,20 +131,20 @@
             this.tabDiscImage.Text = "Disc Image";
             this.tabDiscImage.UseVisualStyleBackColor = true;
             // 
-            // tabControl3
+            // discImageTabControl
             // 
-            this.tabControl3.Controls.Add(this.tabPage5);
-            this.tabControl3.Controls.Add(this.tabPage4);
-            this.tabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl3.Location = new System.Drawing.Point(3, 3);
-            this.tabControl3.Name = "tabControl3";
-            this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(613, 457);
-            this.tabControl3.TabIndex = 3;
+            this.discImageTabControl.Controls.Add(this.tabPage5);
+            this.discImageTabControl.Controls.Add(this.tabPage4);
+            this.discImageTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.discImageTabControl.Location = new System.Drawing.Point(3, 3);
+            this.discImageTabControl.Name = "discImageTabControl";
+            this.discImageTabControl.SelectedIndex = 0;
+            this.discImageTabControl.Size = new System.Drawing.Size(613, 457);
+            this.discImageTabControl.TabIndex = 3;
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.groupBox2);
+            this.tabPage5.Controls.Add(this.discImageGroupBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -153,18 +153,18 @@
             this.tabPage5.Text = "Info";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // discImageGroupBox
             // 
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.Button_openfile);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.linkLabel3);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 264);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Disc Image Info";
+            this.discImageGroupBox.Controls.Add(this.label6);
+            this.discImageGroupBox.Controls.Add(this.Button_openfile);
+            this.discImageGroupBox.Controls.Add(this.label7);
+            this.discImageGroupBox.Controls.Add(this.linkLabel3);
+            this.discImageGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.discImageGroupBox.Name = "discImageGroupBox";
+            this.discImageGroupBox.Size = new System.Drawing.Size(300, 264);
+            this.discImageGroupBox.TabIndex = 12;
+            this.discImageGroupBox.TabStop = false;
+            this.discImageGroupBox.Text = "Disc Image Info";
             // 
             // label6
             // 
@@ -210,7 +210,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.splitContainer3);
+            this.tabPage4.Controls.Add(this.filesystemSplitContainer);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -219,40 +219,40 @@
             this.tabPage4.Text = "Filesystem";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // splitContainer3
+            // filesystemSplitContainer
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Name = "splitContainer3";
+            this.filesystemSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filesystemSplitContainer.Location = new System.Drawing.Point(3, 3);
+            this.filesystemSplitContainer.Name = "filesystemSplitContainer";
             // 
-            // splitContainer3.Panel1
+            // filesystemSplitContainer.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.treeView1);
+            this.filesystemSplitContainer.Panel1.Controls.Add(this.filesystemTreeView);
             // 
-            // splitContainer3.Panel2
+            // filesystemSplitContainer.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.button6);
-            this.splitContainer3.Panel2.Controls.Add(this.label4);
-            this.splitContainer3.Panel2.Controls.Add(this.label5);
-            this.splitContainer3.Panel2.Controls.Add(this.linkLabel2);
-            this.splitContainer3.Panel2.Controls.Add(this.Button_Export);
-            this.splitContainer3.Panel2.Controls.Add(this.Button_Open);
-            this.splitContainer3.Size = new System.Drawing.Size(599, 425);
-            this.splitContainer3.SplitterDistance = 396;
-            this.splitContainer3.TabIndex = 0;
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.button6);
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.label4);
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.label5);
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.linkLabel2);
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.Button_Export);
+            this.filesystemSplitContainer.Panel2.Controls.Add(this.Button_Open);
+            this.filesystemSplitContainer.Size = new System.Drawing.Size(599, 425);
+            this.filesystemSplitContainer.SplitterDistance = 396;
+            this.filesystemSplitContainer.TabIndex = 0;
             // 
-            // treeView1
+            // filesystemTreeView
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.filesystemImageList;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(396, 425);
-            this.treeView1.TabIndex = 1;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.filesystemTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filesystemTreeView.HideSelection = false;
+            this.filesystemTreeView.ImageIndex = 0;
+            this.filesystemTreeView.ImageList = this.filesystemImageList;
+            this.filesystemTreeView.Location = new System.Drawing.Point(0, 0);
+            this.filesystemTreeView.Name = "filesystemTreeView";
+            this.filesystemTreeView.SelectedImageIndex = 0;
+            this.filesystemTreeView.Size = new System.Drawing.Size(396, 425);
+            this.filesystemTreeView.TabIndex = 1;
+            this.filesystemTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // filesystemImageList
             // 
@@ -263,6 +263,17 @@
             this.filesystemImageList.Images.SetKeyName(2, "stage.png");
             this.filesystemImageList.Images.SetKeyName(3, "folder.png");
             this.filesystemImageList.Images.SetKeyName(4, "smashball.png");
+            // 
+            // button6
+            // 
+            this.button6.Enabled = false;
+            this.button6.Location = new System.Drawing.Point(40, 339);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 23);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Replace Selected File";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label4
             // 
@@ -319,7 +330,7 @@
             // 
             // tabDatFile
             // 
-            this.tabDatFile.Controls.Add(this.tabControl2);
+            this.tabDatFile.Controls.Add(this.datFileTabControl);
             this.tabDatFile.Location = new System.Drawing.Point(4, 22);
             this.tabDatFile.Name = "tabDatFile";
             this.tabDatFile.Padding = new System.Windows.Forms.Padding(3);
@@ -328,21 +339,21 @@
             this.tabDatFile.Text = "DAT File";
             this.tabDatFile.UseVisualStyleBackColor = true;
             // 
-            // tabControl2
+            // datFileTabControl
             // 
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(3, 3);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(613, 457);
-            this.tabControl2.TabIndex = 4;
+            this.datFileTabControl.Controls.Add(this.tabPage3);
+            this.datFileTabControl.Controls.Add(this.tabPage1);
+            this.datFileTabControl.Controls.Add(this.tabPage2);
+            this.datFileTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datFileTabControl.Location = new System.Drawing.Point(3, 3);
+            this.datFileTabControl.Name = "datFileTabControl";
+            this.datFileTabControl.SelectedIndex = 0;
+            this.datFileTabControl.Size = new System.Drawing.Size(613, 457);
+            this.datFileTabControl.TabIndex = 4;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.datFileGroupGox);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -351,20 +362,20 @@
             this.tabPage3.Text = "Info";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // datFileGroupGox
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.linkLabel1);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 264);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "DAT File Info";
+            this.datFileGroupGox.Controls.Add(this.button5);
+            this.datFileGroupGox.Controls.Add(this.label3);
+            this.datFileGroupGox.Controls.Add(this.label2);
+            this.datFileGroupGox.Controls.Add(this.linkLabel1);
+            this.datFileGroupGox.Controls.Add(this.button4);
+            this.datFileGroupGox.Controls.Add(this.button3);
+            this.datFileGroupGox.Location = new System.Drawing.Point(6, 6);
+            this.datFileGroupGox.Name = "datFileGroupGox";
+            this.datFileGroupGox.Size = new System.Drawing.Size(300, 264);
+            this.datFileGroupGox.TabIndex = 2;
+            this.datFileGroupGox.TabStop = false;
+            this.datFileGroupGox.Text = "DAT File Info";
             // 
             // button5
             // 
@@ -432,7 +443,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Controls.Add(this.nodesSplitContainer);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -441,32 +452,32 @@
             this.tabPage1.Text = "Nodes";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // nodesSplitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
+            this.nodesSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nodesSplitContainer.Location = new System.Drawing.Point(3, 3);
+            this.nodesSplitContainer.Name = "nodesSplitContainer";
             // 
-            // splitContainer1.Panel1
+            // nodesSplitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView2);
+            this.nodesSplitContainer.Panel1.Controls.Add(this.nodesTreeView);
             // 
-            // splitContainer1.Panel2
+            // nodesSplitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(599, 425);
-            this.splitContainer1.SplitterDistance = 308;
-            this.splitContainer1.TabIndex = 0;
-            this.splitContainer1.TabStop = false;
+            this.nodesSplitContainer.Panel2.Controls.Add(this.dataGridView1);
+            this.nodesSplitContainer.Size = new System.Drawing.Size(599, 425);
+            this.nodesSplitContainer.SplitterDistance = 308;
+            this.nodesSplitContainer.TabIndex = 0;
+            this.nodesSplitContainer.TabStop = false;
             // 
-            // treeView2
+            // nodesTreeView
             // 
-            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(0, 0);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(308, 425);
-            this.treeView2.TabIndex = 3;
-            this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
+            this.nodesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nodesTreeView.Location = new System.Drawing.Point(0, 0);
+            this.nodesTreeView.Name = "nodesTreeView";
+            this.nodesTreeView.Size = new System.Drawing.Size(308, 425);
+            this.nodesTreeView.TabIndex = 3;
+            this.nodesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
             // 
             // dataGridView1
             // 
@@ -508,7 +519,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.splitContainer2);
+            this.tabPage2.Controls.Add(this.texturesSplitContainer);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -517,84 +528,86 @@
             this.tabPage2.Text = "Textures";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // splitContainer2
+            // texturesSplitContainer
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer2.Name = "splitContainer2";
+            this.texturesSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.texturesSplitContainer.Location = new System.Drawing.Point(3, 3);
+            this.texturesSplitContainer.Name = "texturesSplitContainer";
             // 
-            // splitContainer2.Panel1
+            // texturesSplitContainer.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.listBox1);
+            this.texturesSplitContainer.Panel1.Controls.Add(this.textureListBox);
             // 
-            // splitContainer2.Panel2
+            // texturesSplitContainer.Panel2
             // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.LightGray;
-            this.splitContainer2.Panel2.Controls.Add(this.button2);
-            this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Panel2.Controls.Add(this.pictureBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(599, 425);
-            this.splitContainer2.SplitterDistance = 240;
-            this.splitContainer2.TabIndex = 0;
-            this.splitContainer2.TabStop = false;
+            this.texturesSplitContainer.Panel2.BackColor = System.Drawing.Color.LightGray;
+            this.texturesSplitContainer.Panel2.Controls.Add(this.buttonReplaceTexture);
+            this.texturesSplitContainer.Panel2.Controls.Add(this.buttonExportTexture);
+            this.texturesSplitContainer.Panel2.Controls.Add(this.textureInfoLabel);
+            this.texturesSplitContainer.Panel2.Controls.Add(this.texturePictureBox);
+            this.texturesSplitContainer.Size = new System.Drawing.Size(599, 425);
+            this.texturesSplitContainer.SplitterDistance = 240;
+            this.texturesSplitContainer.TabIndex = 0;
+            this.texturesSplitContainer.TabStop = false;
             // 
-            // listBox1
+            // textureListBox
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.IntegralHeight = false;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(240, 425);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.textureListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textureListBox.FormattingEnabled = true;
+            this.textureListBox.IntegralHeight = false;
+            this.textureListBox.Location = new System.Drawing.Point(0, 0);
+            this.textureListBox.Name = "textureListBox";
+            this.textureListBox.Size = new System.Drawing.Size(240, 425);
+            this.textureListBox.TabIndex = 0;
+            this.textureListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // button2
+            // buttonReplaceTexture
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(277, 370);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Replace";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonReplaceTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReplaceTexture.Enabled = false;
+            this.buttonReplaceTexture.Location = new System.Drawing.Point(277, 370);
+            this.buttonReplaceTexture.Name = "buttonReplaceTexture";
+            this.buttonReplaceTexture.Size = new System.Drawing.Size(75, 23);
+            this.buttonReplaceTexture.TabIndex = 2;
+            this.buttonReplaceTexture.Text = "Replace";
+            this.buttonReplaceTexture.UseVisualStyleBackColor = true;
+            this.buttonReplaceTexture.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // buttonExportTexture
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(277, 399);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Export";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonExportTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExportTexture.Enabled = false;
+            this.buttonExportTexture.Location = new System.Drawing.Point(277, 399);
+            this.buttonExportTexture.Name = "buttonExportTexture";
+            this.buttonExportTexture.Size = new System.Drawing.Size(75, 23);
+            this.buttonExportTexture.TabIndex = 1;
+            this.buttonExportTexture.Text = "Export";
+            this.buttonExportTexture.UseVisualStyleBackColor = true;
+            this.buttonExportTexture.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // textureInfoLabel
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(6, 393);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Size:\r\nFormat:";
+            this.textureInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textureInfoLabel.AutoSize = true;
+            this.textureInfoLabel.BackColor = System.Drawing.Color.Transparent;
+            this.textureInfoLabel.Location = new System.Drawing.Point(6, 393);
+            this.textureInfoLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.textureInfoLabel.Name = "textureInfoLabel";
+            this.textureInfoLabel.Size = new System.Drawing.Size(42, 26);
+            this.textureInfoLabel.TabIndex = 1;
+            this.textureInfoLabel.Text = "Size:\r\nFormat:";
             // 
-            // pictureBox2
+            // texturePictureBox
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(355, 425);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.texturePictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.texturePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.texturePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.texturePictureBox.Location = new System.Drawing.Point(0, 0);
+            this.texturePictureBox.Name = "texturePictureBox";
+            this.texturePictureBox.Size = new System.Drawing.Size(355, 425);
+            this.texturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.texturePictureBox.TabIndex = 0;
+            this.texturePictureBox.TabStop = false;
             // 
             // replaceToolStripMenuItem
             // 
@@ -628,17 +641,6 @@
             this.openDatFileDialog.RestoreDirectory = true;
             this.openDatFileDialog.Title = "Open DAT File";
             // 
-            // button6
-            // 
-            this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(40, 339);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(120, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Replace Selected File";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // openTextureDialog
             // 
             this.openTextureDialog.Filter = ".png files|*.png";
@@ -664,84 +666,84 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 489);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.mainTabControl);
             this.Name = "MainWindow";
             this.Text = "Melee Toolkit";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.mainTabControl.ResumeLayout(false);
             this.tabDiscImage.ResumeLayout(false);
-            this.tabControl3.ResumeLayout(false);
+            this.discImageTabControl.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.discImageGroupBox.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.filesystemSplitContainer.Panel1.ResumeLayout(false);
+            this.filesystemSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.filesystemSplitContainer)).EndInit();
+            this.filesystemSplitContainer.ResumeLayout(false);
             this.tabDatFile.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
+            this.datFileTabControl.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.datFileGroupGox.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.nodesSplitContainer.Panel1.ResumeLayout(false);
+            this.nodesSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nodesSplitContainer)).EndInit();
+            this.nodesSplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.texturesSplitContainer.Panel1.ResumeLayout(false);
+            this.texturesSplitContainer.Panel2.ResumeLayout(false);
+            this.texturesSplitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.texturesSplitContainer)).EndInit();
+            this.texturesSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.texturePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage tabDiscImage;
         private System.Windows.Forms.ImageList filesystemImageList;
         private System.Windows.Forms.TabPage tabDatFile;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.SplitContainer nodesSplitContainer;
+        private System.Windows.Forms.TreeView nodesTreeView;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl datFileTabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.SplitContainer texturesSplitContainer;
+        private System.Windows.Forms.ListBox textureListBox;
+        private System.Windows.Forms.PictureBox texturePictureBox;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label textureInfoLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Offset;
         private System.Windows.Forms.DataGridViewTextBoxColumn VariableName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonExportTexture;
+        private System.Windows.Forms.Button buttonReplaceTexture;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox datFileGroupGox;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabControl discImageTabControl;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.SplitContainer filesystemSplitContainer;
+        private System.Windows.Forms.TreeView filesystemTreeView;
         private System.Windows.Forms.Button Button_Export;
         private System.Windows.Forms.Button Button_Open;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Button Button_openfile;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox discImageGroupBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.LinkLabel linkLabel3;

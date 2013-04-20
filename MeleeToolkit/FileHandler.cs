@@ -196,11 +196,6 @@ namespace MeleeToolkit
             }
         }
 
-        internal static void ExportImage(Image image, SaveFileDialog dialog)
-        {
-                image.Save(dialog.FileName, ImageFormat.Png);
-        }
-
         internal static byte[] OpenDatFile(IsoFileInfo info)
         {
             byte[] outFile = new byte[info.Size];
@@ -212,25 +207,8 @@ namespace MeleeToolkit
             return outFile;
         }
 
-        internal static byte[] OpenDatFile(Stream datStream)
-        {
-            byte[] outFile = new byte[datStream.Length];
-            datStream.Read(outFile, 0, (int)datStream.Length);
-            datStream.Close();
-            return outFile;
-        }
 
-        internal static void SaveDatFile(SaveFileDialog dialog)
-        {
-            byte[] datFile = DatFile.file;
-            Stream myStream;
-            if ((myStream = dialog.OpenFile()) != null)
-            {
-                myStream.Write(datFile, 0, datFile.Length);
-                myStream.Close();
 
-            }
-        }
 
         internal static IsoFileInfo SearchIso(string filename, TreeNode rootNode)
         {
