@@ -227,6 +227,36 @@ namespace MeleeToolkit
                 dataGridView1.Rows.Add("0x0C", "Color Count", header.colorCount0xA.ToString("x4"));
                 dataGridView1.Rows.Add("0x0E", "Unknown", header.unknown0xA.ToString("x4"));
             }
+
+            else if (nodesTreeView.SelectedNode.Text == "FighterDataNode")
+            {
+                FighterDataNode header = (FighterDataNode)nodesTreeView.SelectedNode.Tag;
+                dataGridView1.Rows.Add("", "Location", header.location.ToString("x8"));
+                dataGridView1.Rows.Add("0x00", "Unknown Offset", header.unknownOffset0x00.ToString("x8"));
+                dataGridView1.Rows.Add("0x04", "Unknown Offset", header.unknownOffset0x04.ToString("x8"));
+                dataGridView1.Rows.Add("0x08", "Unknown Offset", header.unknownOffset0x08.ToString("x8"));
+                dataGridView1.Rows.Add("0x0C", "Unknown Offset", header.unknownOffset0x0C.ToString("x8"));
+                dataGridView1.Rows.Add("0x10", "Unknown Offset", header.unknownOffset0x10.ToString("x8"));
+                dataGridView1.Rows.Add("0x14", "Unknown Offset", header.unknownOffset0x14.ToString("x8"));
+                dataGridView1.Rows.Add("0x18", "Unknown Offset", header.unknownOffset0x18.ToString("x8"));
+                dataGridView1.Rows.Add("0x1C", "Unknown Offset", header.unknownOffset0x1C.ToString("x8"));
+                dataGridView1.Rows.Add("0x20", "Unknown Offset", header.unknownOffset0x20.ToString("x8"));
+                dataGridView1.Rows.Add("0x24", "Unknown Offset", header.unknownOffset0x24.ToString("x8"));
+                dataGridView1.Rows.Add("0x28", "Unknown Offset", header.unknownOffset0x28.ToString("x8"));
+                dataGridView1.Rows.Add("0x2C", "Unknown Offset", header.unknownOffset0x2C.ToString("x8"));
+                dataGridView1.Rows.Add("0x30", "Unknown Offset", header.unknownOffset0x30.ToString("x8"));
+                dataGridView1.Rows.Add("0x34", "Unknown Offset", header.unknownOffset0x34.ToString("x8"));
+                dataGridView1.Rows.Add("0x38", "Unknown Offset", header.unknownOffset0x38.ToString("x8"));
+                dataGridView1.Rows.Add("0x3C", "Unknown Offset", header.unknownOffset0x3C.ToString("x8"));
+                dataGridView1.Rows.Add("0x40", "Unknown Offset", header.unknownOffset0x40.ToString("x8"));
+                dataGridView1.Rows.Add("0x44", "Unknown Offset", header.unknownOffset0x44.ToString("x8"));
+                dataGridView1.Rows.Add("0x48", "Unknown Offset", header.unknownOffset0x48.ToString("x8"));
+                dataGridView1.Rows.Add("0x4C", "Unknown Offset", header.unknownOffset0x4C.ToString("x8"));
+                dataGridView1.Rows.Add("0x50", "Unknown Offset", header.unknownOffset0x50.ToString("x8"));
+                dataGridView1.Rows.Add("0x54", "Unknown Offset", header.unknownOffset0x54.ToString("x8"));
+                dataGridView1.Rows.Add("0x58", "Unknown Offset", header.unknownOffset0x58.ToString("x8"));
+                dataGridView1.Rows.Add("0x5C", "Unknown Offset", header.unknownOffset0x5C.ToString("x8"));
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

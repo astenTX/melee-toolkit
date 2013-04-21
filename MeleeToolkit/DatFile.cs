@@ -109,6 +109,8 @@ namespace MeleeToolkit
                 rootNode.Nodes.Add(newTreeNode);
                 if (newTreeNode.Text.IndexOf("joint") != -1 && newTreeNode.Text.IndexOf("matanim") == -1 && newTreeNode.Text.IndexOf("shapeanim") == -1)
                     BuildJointNodes(newTreeNode, newRootNode.RootOffset0x0 + dataOffset);
+                else if (newTreeNode.Text.IndexOf("ftData") != -1)
+                    BuildFighterDataNodes(newTreeNode, newRootNode.RootOffset0x0 + dataOffset);
             }
 
             for (int i = 0; i < fileHeader.RootCount0x10; i++)
@@ -404,6 +406,64 @@ namespace MeleeToolkit
             datStream.Close();
             return outFile;
         }
+
+        private static void BuildFighterDataNodes(TreeNode parent, UInt32 offset)
+        {
+            var newFighterDataNode = new FighterDataNode
+            {
+                location = offset,
+                // 0x00
+                unknownOffset0x00 = ReadUInt32(offset + 0x00), // 0x184 - fighter attributes
+                unknownOffset0x04 = ReadUInt32(offset + 0x04),
+                unknownOffset0x08 = ReadUInt32(offset + 0x08), // 0x18 - {uint32; offset; uint32; offset; uint32[2];}
+                unknownOffset0x0C = ReadUInt32(offset + 0x0C), // 0x18 - {offset; uint32[2]; offset; uint32[2];}[] --
+                // 0x10
+                unknownOffset0x10 = ReadUInt32(offset + 0x10), // 0x??
+                unknownOffset0x14 = ReadUInt32(offset + 0x14), // 0x18 - {offset; uint32[2]; offset; uint32[2];}[] -- win animation info?
+                unknownOffset0x18 = ReadUInt32(offset + 0x18), // 0x1C?x
+                unknownOffset0x1C = ReadUInt32(offset + 0x1C), // 0x?? - {offset[];}
+                // 0x20
+                unknownOffset0x20 = ReadUInt32(offset + 0x20), // 0x04 - {offset;} - JOBJ_DATA
+                unknownOffset0x24 = ReadUInt32(offset + 0x24), // 0x18?
+                unknownOffset0x28 = ReadUInt32(offset + 0x28),
+                unknownOffset0x2C = ReadUInt32(offset + 0x2C), // 0x14 - {uint32; offset; uint32; offset; uint32;}
+                // 0x30
+                unknownOffset0x30 = ReadUInt32(offset + 0x30), // 0x08 - {uint32; offset;}
+                unknownOffset0x34 = ReadUInt32(offset + 0x34), // 0x08?
+                unknownOffset0x38 = ReadUInt32(offset + 0x38), // 0x28
+                unknownOffset0x3C = ReadUInt32(offset + 0x3C), // 0x18
+                // 0x40
+                unknownOffset0x40 = ReadUInt32(offset + 0x40), // 0x30
+                unknownOffset0x44 = ReadUInt32(offset + 0x44), // 0x1C
+                unknownOffset0x48 = ReadUInt32(offset + 0x48), // 0x0C+ - {offset; offset; offset;}
+                unknownOffset0x4C = ReadUInt32(offset + 0x4C), // 0x38 - {offset; uint32[6]; offset; offset; uint32[5];}
+                // 0x50
+                unknownOffset0x50 = ReadUInt32(offset + 0x50), // 0x08 - {uint32; float;}
+                unknownOffset0x54 = ReadUInt32(offset + 0x54), // 0x14
+                unknownOffset0x58 = ReadUInt32(offset + 0x58), // 0x34
+                unknownOffset0x5C = ReadUInt32(offset + 0x5C)  // 0x40 - JOBJ_DATA
+            };
+
+            var newTreeNode = new TreeNode("FighterDataNode");
+            newTreeNode.Tag = newFighterDataNode;
+            parent.Nodes.Add(newTreeNode);
+
+            if (newFighterDataNode.unknownOffset0x20 != 0)
+            {
+                var nodeOffset = ReadUInt32(newFighterDataNode.unknownOffset0x20 + dataOffset);
+
+                if (nodeOffset != 0)
+                {
+                    BuildJointNodes(newTreeNode, nodeOffset + dataOffset);
+                }
+            }
+
+            if (newFighterDataNode.unknownOffset0x5C != 0)
+            {
+                BuildJointNodes(newTreeNode, newFighterDataNode.unknownOffset0x5C + dataOffset);
+            }
+
+        }
     }
 
     struct DatHeader
@@ -510,6 +570,39 @@ namespace MeleeToolkit
         public string paletteFormatString;
     }
 
-
+    public struct FighterDataNode
+    {
+        public UInt32 location;
+        // 0x00
+        public UInt32 unknownOffset0x00; // 0x184 - fighter attributes
+        public UInt32 unknownOffset0x04;
+        public UInt32 unknownOffset0x08; // 0x18 - {uint32; offset; uint32; offset; uint32[2];}
+        public UInt32 unknownOffset0x0C; // 0x18 - {offset; uint32[2]; offset; uint32[2];}[] --
+        // 0x10
+        public UInt32 unknownOffset0x10; // 0x??
+        public UInt32 unknownOffset0x14; // 0x18 - {offset; uint32[2]; offset; uint32[2];}[] -- win animation info?
+        public UInt32 unknownOffset0x18; // 0x1C?x
+        public UInt32 unknownOffset0x1C; // 0x?? - {offset[];}
+        // 0x20
+        public UInt32 unknownOffset0x20; // 0x04 - {offset;} - JOBJ_DATA
+        public UInt32 unknownOffset0x24; // 0x18?
+        public UInt32 unknownOffset0x28;
+        public UInt32 unknownOffset0x2C; // 0x14 - {uint32; offset; uint32; offset; uint32;}
+        // 0x30
+        public UInt32 unknownOffset0x30; // 0x08 - {uint32; offset;}
+        public UInt32 unknownOffset0x34; // 0x08?
+        public UInt32 unknownOffset0x38; // 0x28
+        public UInt32 unknownOffset0x3C; // 0x18
+        // 0x40
+        public UInt32 unknownOffset0x40; // 0x30
+        public UInt32 unknownOffset0x44; // 0x1C
+        public UInt32 unknownOffset0x48; // 0x0C+ - {offset; offset; offset;}
+        public UInt32 unknownOffset0x4C; // 0x38 - {offset; uint32[6]; offset; offset; uint32[5];}
+        // 0x50
+        public UInt32 unknownOffset0x50; // 0x08 - {uint32; float;}
+        public UInt32 unknownOffset0x54; // 0x14
+        public UInt32 unknownOffset0x58; // 0x34
+        public UInt32 unknownOffset0x5C; // 0x40 - JOBJ_DATA
+    };
 
 }
