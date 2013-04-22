@@ -952,7 +952,7 @@ namespace libWiiSharp
                 case TPL_TextureFormat.CI14X2:
                     return Shared.AddPadding(width, 4) * Shared.AddPadding(height, 4) * 2;
                 case TPL_TextureFormat.CMP:
-                    return width * height;
+                    return Shared.AddPadding(width, 8) * Shared.AddPadding(height, 8) / 2;
                 default:
                     throw new FormatException("Unsupported Texture Format!");
             }

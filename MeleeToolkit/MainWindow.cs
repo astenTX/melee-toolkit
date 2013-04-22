@@ -33,12 +33,12 @@ namespace MeleeToolkit
                 var info = new FileInfo(openDiscImageDialog.FileName);
                 Settings.Default.openDiscImagePath = Path.GetDirectoryName(openDiscImageDialog.FileName);
 
-                FileHandler.OpenFile(info.FullName);
-                label7.Text = FileHandler.GetTitle();
-                label6.Text = FileHandler.GetVersion();
+                IsoFile.OpenFile(info.FullName);
+                label7.Text = IsoFile.GetTitle();
+                label6.Text = IsoFile.GetVersion();
                 filesystemTreeView.Nodes.Clear();
                 filesystemTreeView.BeginUpdate();
-                filesystemTreeView.Nodes.Add(FileHandler.root);
+                filesystemTreeView.Nodes.Add(IsoFile.root);
                 filesystemTreeView.Nodes[0].Expand();
                 filesystemTreeView.EndUpdate();
                 if (DatFile.isFileLoaded) button4.Enabled = true;
@@ -53,7 +53,7 @@ namespace MeleeToolkit
             label2.Text = DatFile.fileName;
             label3.Text = DatFile.file.Length.ToString() + " bytes";
             button3.Enabled = true;
-            if (FileHandler.isFileLoaded) button4.Enabled = true;
+            if (IsoFile.isFileLoaded) button4.Enabled = true;
             texturePictureBox.Image = null;
             textureInfoLabel.Text = "Size:\nFormat:\nColors:";
             nodesTreeView.Nodes.Clear();
@@ -80,7 +80,7 @@ namespace MeleeToolkit
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 Settings.Default.saveDatFilePath = Path.GetDirectoryName(saveFileDialog1.FileName);
-                FileHandler.ExportFileFromIso(info, saveFileDialog1);
+                IsoFile.ExportFileFromIso(info, saveFileDialog1);
             }
         }
 
@@ -108,7 +108,7 @@ namespace MeleeToolkit
         private void Button_Open_Click(object sender, EventArgs e)
         {
             IsoFileInfo info = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
-            OpenDatFileAndUpdateWindow(FileHandler.OpenDatFile(info), info.Name);
+            OpenDatFileAndUpdateWindow(IsoFile.OpenDatFile(info), info.Name);
         }
 
         private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
@@ -330,12 +330,12 @@ namespace MeleeToolkit
         private void button4_Click(object sender, EventArgs e)
         {
             string datFileName = DatFile.fileName;
-            IsoFileInfo fileInfo = FileHandler.SearchIso(datFileName, filesystemTreeView.Nodes[0]);
+            IsoFileInfo fileInfo = IsoFile.SearchIso(datFileName, filesystemTreeView.Nodes[0]);
             if (fileInfo == null)
                 MessageBox.Show("Error finding file in disc image!");
             else
             {
-                FileHandler.ReplaceFileInIso(fileInfo, DatFile.file);
+                IsoFile.ReplaceFileInIso(fileInfo, DatFile.file);
             }
         }
 
@@ -363,7 +363,7 @@ namespace MeleeToolkit
                 var info = new FileInfo(openDatFileDialog.FileName);
                 Settings.Default.openDatFilePath = Path.GetDirectoryName(info.FullName);
                 var fileInfo = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
-                FileHandler.ReplaceFileInIso(fileInfo, info.FullName);
+                IsoFile.ReplaceFileInIso(fileInfo, info.FullName);
             }
         }
 
