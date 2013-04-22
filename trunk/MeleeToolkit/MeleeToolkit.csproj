@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatFile.cs" />
+    <Compile Include="DatNode.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="IsoFileInfo.cs" />
     <Compile Include="LibWiiSharp\MessageEventArgs.cs" />

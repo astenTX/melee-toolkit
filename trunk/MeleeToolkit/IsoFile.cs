@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MeleeToolkit
 {
-    static class FileHandler
+    static class IsoFile
     {
         private static FileStream _streamFile;
         private const int OffsetID = 0x0;
