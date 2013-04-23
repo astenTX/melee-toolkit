@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CToolsWii\ImageData.cs" />
+    <Compile Include="CToolsWii\ImageDataFormat.cs" />
     <Compile Include="DatFile.cs" />
     <Compile Include="DatNode.cs" />
-    <Compile Include="FileHandler.cs" />
+    <Compile Include="IsoFile.cs" />
     <Compile Include="IsoFileInfo.cs" />
     <Compile Include="LibWiiSharp\MessageEventArgs.cs" />
     <Compile Include="LibWiiSharp\Shared.cs" />
