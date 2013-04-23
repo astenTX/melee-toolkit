@@ -3,7 +3,7 @@
 = Level 1 =
   * ~~Support additional texture formats~~
   * Clean up code
-  * Implement .dat node editing
+  * ~~Implement .dat node editing~~
   * Implement extract/replace of boot.dol
   * Include file descriptions
   * Implement version conversion
