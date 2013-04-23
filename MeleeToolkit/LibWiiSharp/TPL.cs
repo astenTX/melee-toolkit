@@ -22,7 +22,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 using MeleeToolkit;
 
 namespace libWiiSharp
@@ -155,7 +157,11 @@ namespace libWiiSharp
 
         public static byte[] ConvertToTextureMelee(Image image, TextureListObject tlo, out byte[] paletteData)
         {
-            TPL tmpTpl = FromImage(image, (TPL_TextureFormat) tlo.imageHeader.imageFormat0x8, (TPL_PaletteFormat) tlo.paletteHeader.paletteFormat0x4);
+            TPL tmpTpl;
+            if (tlo.paletteHeader == null)
+                tmpTpl = FromImage(image, (TPL_TextureFormat)tlo.imageHeader.imageFormat0x8);
+            else
+                tmpTpl = FromImage(image, (TPL_TextureFormat) tlo.imageHeader.imageFormat0x8, (TPL_PaletteFormat) tlo.paletteHeader.paletteFormat0x4);
             paletteData = tmpTpl.paletteData[0];
             return tmpTpl.textureData[0];
         }
@@ -169,19 +175,24 @@ namespace libWiiSharp
             TPL_TextureFormat format = (TPL_TextureFormat)imageHeader.imageFormat0x8;
             imageSize = tmpTpl.textureByteSize(format, width, height);
             byte[] imageData = new byte[imageSize];
-            byte[] paletteData = new byte[paletteHeader.colorCount0xA * 2];
-            uint[] paletteDataRgba;
+            byte[] paletteData = null;
+            uint[] paletteDataRgba = null;
             byte[] rgba;
             Array.ConstrainedCopy(DatFile.file, (int)(imageHeader.imageOffset0x0 + DatFile.dataOffset), imageData, 0, imageData.Length);
-            Array.ConstrainedCopy(DatFile.file, (int)(paletteHeader.paletteOffset0x0 + DatFile.dataOffset), paletteData, 0, paletteData.Length);
-            var tmpHeader = new TPL_PaletteHeader
+
+
+            if (paletteHeader != null)
+            {
+                paletteData = new byte[paletteHeader.colorCount0xC * 2];
+                Array.ConstrainedCopy(DatFile.file, (int)(paletteHeader.paletteOffset0x0 + DatFile.dataOffset), paletteData, 0, paletteData.Length);
+                var tmpHeader = new TPL_PaletteHeader
                 {
-                    NumberOfItems = paletteHeader.colorCount0xA,
+                    NumberOfItems = paletteHeader.colorCount0xC,
                     PaletteFormat = paletteHeader.paletteFormat0x4
                 };
 
-            paletteDataRgba = tmpTpl.paletteToRgba(tmpHeader, paletteData);
-
+                paletteDataRgba = tmpTpl.paletteToRgba(tmpHeader, paletteData);
+            }
 
             switch (format)
             {
@@ -1025,6 +1036,7 @@ namespace libWiiSharp
                 case TPL_TextureFormat.CI14X2:
                     return new byte[0];
                 case TPL_TextureFormat.CMP:
+                    return toCMP((Bitmap)img);
                 default:
                     throw new FormatException("Format not supported!\nCurrently, images can only be converted to the following formats:\nI4, I8, IA4, IA8, RGB565, RGB5A3, RGBA8, CI4, CI8 , CI14X2.");
             }
@@ -1231,6 +1243,12 @@ namespace libWiiSharp
             }
 
             return Shared.UIntArrayToByteArray(output);
+        }
+
+        private byte[] toCMP(Bitmap img)
+        {
+            byte[] data = ImageData.GetData(img);
+            return ImageDataFormat.Cmpr.ConvertTo(data, img.Width, img.Height);
         }
 
         private byte[] toRGBA8(Bitmap img)
