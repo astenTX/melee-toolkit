@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -251,6 +252,87 @@ namespace MeleeToolkit
                 var fileInfo = (IsoFileInfo) filesystemTreeView.SelectedNode.Tag;
                 IsoFile.ReplaceFileInIso(fileInfo, info.FullName);
             }
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //Values value = (Values) dataGridView1.CurrentRow.Tag;
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Values value = (Values)dataGridView1.CurrentRow.Tag;
+            int fileOffset = value.fileLocation + value.offset;
+            byte[] newData;
+            switch (value.type)
+            {
+                case Values.Types.UInt32:
+                    UInt32 oldValue32 = (UInt32)value.value;
+                    UInt32 newValue32;
+                    try { newValue32 = UInt32.Parse(dataGridView1.CurrentCell.Value.ToString(), NumberStyles.HexNumber); }
+                    catch (Exception f)
+                    {
+                        if (f is FormatException || f is OverflowException)
+                        {
+                            MessageBox.Show("Please enter a 32-bit hexadecimal number!");
+                            dataGridView1.CurrentCell.Value = oldValue32.ToString("x8");
+                            return;
+                        }
+                        else throw;
+
+                    }
+                    if (oldValue32 == newValue32) return;
+                    value.value = newValue32;
+                    newData = BitConverter.GetBytes(newValue32);
+                    break;
+                case Values.Types.UInt16:
+                    UInt16 oldValue16 = (UInt16)value.value;
+                    UInt16 newValue16;
+                    try { newValue16 = UInt16.Parse(dataGridView1.CurrentCell.Value.ToString(), NumberStyles.HexNumber); }
+                    catch (Exception f)
+                    {
+                        if (f is FormatException || f is OverflowException)
+                        {
+                            MessageBox.Show("Please enter a 16-bit hexadecimal number!");
+                            dataGridView1.CurrentCell.Value = oldValue16.ToString("x4");
+                            return;
+                        }
+                        else throw;
+
+                    }
+                    if (oldValue16 == newValue16) return;
+                    value.value = newValue16;
+                    newData = BitConverter.GetBytes(newValue16);
+                    break;
+                case Values.Types.Float:
+                    float oldValueFloat = (float)value.value;
+                    float newValueFloat;
+                    try { newValueFloat = float.Parse(dataGridView1.CurrentCell.Value.ToString()); }
+                    catch (FormatException f)
+                    {
+                        MessageBox.Show("Please enter a decimal number!");
+                        dataGridView1.CurrentCell.Value = oldValueFloat;
+                        return;
+                    }
+                    
+                    if (oldValueFloat == newValueFloat) return;
+                    value.value = newValueFloat;
+                    newData = BitConverter.GetBytes(newValueFloat);
+                    break;
+
+                default:
+                    return;
+            }
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(newData);
+            DatFile.UpdateValue(newData, fileOffset);
         }
 
 

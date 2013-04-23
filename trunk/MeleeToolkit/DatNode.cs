@@ -394,6 +394,7 @@ namespace MeleeToolkit
     public class Values
     {
         public string name;
+        public int fileLocation;
         public int offset;
         public enum Types { UInt32, UInt16, Float };
         public Types type;
@@ -404,6 +405,7 @@ namespace MeleeToolkit
         {
             this.name = name;
             this.offset = offset;
+            fileLocation = (int)location;
             int totalOffset = (int)location + offset;
             this.type = type;
             this.isEditable = isEditable;
