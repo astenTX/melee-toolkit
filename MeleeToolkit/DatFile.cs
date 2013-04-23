@@ -297,6 +297,14 @@ namespace MeleeToolkit
             return outFile;
         }
 
+        internal static void UpdateValue(byte[] newData, int fileOffset)
+        {
+            for (int i = 0; i < newData.Length; i++)
+            {
+                file[fileOffset + i] = newData[i];
+            }
+        }
+
         private static void BuildFighterDataNodes(TreeNode parent, UInt32 offset)
         {
             var newFighterDataNode = new FighterDataNode(file, offset);
