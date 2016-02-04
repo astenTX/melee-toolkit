@@ -1,0 +1,1 @@
+Melee Toolkit is designed to help users modify Super Smash Bros. Melee disc images and files. The program can read and parse Super Smash Bros. Melee disc images and .dat files for easy editing, replacing, and exporting.
